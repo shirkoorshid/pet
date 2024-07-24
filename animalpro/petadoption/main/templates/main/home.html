@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pet Adoption</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/styles.css' %}">
+</head>
+<body>
+    <h1>הבית של שיר</h1>
+    <p>הקדמה קצרה על מטרת האתר.</p>
+    <h2>חיות מחמד מומלצות</h2>
+    {% for pet in recommended_pets %}
+        <div>
+            <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
+            <h3>{{ pet.name }}</h3>
+            <p>{{ pet.description }}</p>
+        </div>
+    {% endfor %}
+    <nav>
+        <a href="{% url 'pet_list' %}">רישומי אימוץ</a>
+        <a href="{% url 'adoption_process' %}">מידע על תהליך האימוץ</a>
+        <a href="{% url 'success_stories' %}">סיפורי הצלחה</a>
+        <a href="{% url 'about_us' %}">אודותינו</a>
+        <a href="{% url 'resources' %}">משאבים</a>
+        <a href="{% url 'blog' %}">בלוג/חדשות</a>
+    </nav>
+</body>
+</html>
