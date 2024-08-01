@@ -1,53 +1,59 @@
+/* כללי */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
+    font-family: david, sans-serif;
+    background-image: url("{% static 'images/background2.jpeg' %}"); /* הוספת תמונת רקע */
+    background-size: cover; /* מכסה את כל הרקע בתמונה */
+    background-position: center; /* ממקם את התמונה במרכז */
+    background-repeat: no-repeat; /* מונע חזרה על התמונה */
+    color: #333;
+    text-align: center; /* מרכז את הטקסט בעמוד כולו */
 }
 
-header {
-    background-color: #35424a;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+/* קונטיינר מרכזי */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #e0f7fa; /* צבע רקע כחול בהיר לתוכן */
+    border-radius: 8px; /* פינות מעוגלות */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* צל לתוכן */
+    text-align: right; /* הטקסט בתוך הקונטיינר יהיה ממורכז לימין */
+    direction: rtl; /* סידור טקסט מימין לשמאל */
+}
+
+/* סגנון כותרות */
+h1, h2 {
+    color: #00796b; /* צבע כהה לתכנים */
+    margin: 0; /* להסיר רווחים מיותרים */
+}
+
+/* סגנון תצוגת חיות */
+.pet {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd; /* קו תחתון */
+    padding-bottom: 20px;
+}
+
+/* סגנון תמונות */
+.pet-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* פינות מעוגלות לתמונות */
+}
+
+/* תפריט ניווט */
+nav {
+    margin-top: 20px;
 }
 
 nav a {
-    margin: 0 10px;
-    color: #35424a;
     text-decoration: none;
+    color: #00796b;
+    margin: 0 10px; /* רווחים בצדדים של הקישורים */
+    display: inline-block; /* כך שהקישורים יהיו ממוינים לצד אחד */
 }
 
 nav a:hover {
     text-decoration: underline;
-}
-
-.container {
-    padding: 20px;
-}
-
-h1 {
-    color: #35424a;
-}
-
-.pet {
-    background-color: white;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.pet img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.pet h3 {
-    margin: 0;
-}
-
-.pet p {
-    margin: 5px 0;
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Pet Adoption{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body style="background-image: url('{% static 'images/background.jpeg' %}'); background-size: cover;">
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'adoption_records' %}">Adoption Records</a></li>
+            <li><a href="{% url 'adoption_process' %}">Adoption Process</a></li>
+            <li><a href="{% url 'success_stories' %}">Success Stories</a></li>
+            <li><a href="{% url 'about_us' %}">About Us</a></li>
+            <li><a href="{% url 'resources' %}">Resources</a></li>
+            <li><a href="{% url 'blog_news' %}">Blog/News</a></li>
+            <li><a href="{% url 'user_account' %}">User Account</a></li>
+            <li><a href="{% url 'privacy_security' %}">Privacy & Security</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

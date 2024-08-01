@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>רישומי אימוץ</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .no-pets {
+            text-align: center;
+            color: #777;
+            margin-top: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>רישומי אימוץ</h1>
+        
+        <p>ברוכים הבאים לדף רישומי האימוץ שלנו! כאן תוכלו למצוא מגוון חיות מחמד הזמינות לאימוץ. כל חיה שמופיעה ברשימה כאן עברה בדיקות רפואיות ותהיה מוכנה להתחיל פרק חדש בחייה.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>תמונה</th>
+                    <th>שם</th>
+                    <th>גזע/סוג</th>
+                    <th>גיל (שנים)</th>
+                    <th>משקל (ק"ג)</th>
+                    <th>תיאור</th>
+                    <th>סטטוס</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="/static/images/images/סטיופה.jpg" alt="סטיופה" style="width: 100px; height: auto;"></td>
+                    <td>סטיופה</td>
+                    <td>חתול</td>
+                    <td>3</td>
+                    <td>4.5</td>
+                    <td>חתול חמוד ושובב שאוהב לשחק עם כדורים.</td>
+                    <td class="status">זמין לאימוץ</td>
+                </tr>
+                <tr>
+                    <td><img src="/static/images/images/שארק.jpg" alt="שארק" style="width: 100px; height: auto;"></td>
+                    <td>שארק</td>
+                    <td>כלב רועה גרמני</td>
+                    <td>5</td>
+                    <td>30</td>
+                    <td>כלב נאמן וידידותי, אוהב לרוץ ולהיות פעיל.</td>
+                    <td class="status">זמין לאימוץ</td>
+                </tr>
+                <tr>
+                    <td><img src="/static/images/images/אנדי.jpeg" alt="אנדי" style="width: 100px; height: auto;"></td>
+                    <td>אנדי</td>
+                    <td>כלב</td>
+                    <td>4</td>
+                    <td>25</td>
+                    <td>כלב אוהב ילדים, מתאים למשפחה.</td>
+                    <td class="status">זמין לאימוץ</td>
+                </tr>
+                <tr>
+                    <td><img src="/static/images/images/טופי.jpg" alt="טופי" style="width: 100px; height: auto;"></td>
+                    <td>טופי</td>
+                    <td>פומראיין</td>
+                    <td>5</td>
+                    <td>8</td>
+                    <td>כלבה מתוקה אמיתית לא מזיקה וממושמעת.</td>
+                    <td class="status">זמין לאימוץ</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>אם יש לכם שאלות נוספות על אחת החיות ברשימה, אל תהססו ליצור איתנו קשר. אנו כאן כדי לעזור לכם למצוא את החיה המתאימה ביותר עבורכם ולספק את כל המידע הנדרש לתהליך האימוץ.</p>
+        
+        <nav>
+            <a href="{% url 'home' %}">חזרה לדף הראשי</a> <!-- Adjust this to your homepage URL name -->
+        </nav>
+    </div>
+</body>
+</html>

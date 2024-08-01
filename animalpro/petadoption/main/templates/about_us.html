@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אודות - הבית לחיות בשיר</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            direction: rtl; /* סידור הטקסט מימין לשמאל */
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f8f8f8;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            color: #333;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #00796b;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+        }
+        .about h2 {
+            color: #333;
+        }
+        .about p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        footer {
+            background-color: #f8f8f8;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+        footer p {
+            margin: 0;
+            color: #666;
+        }
+        footer a {
+            text-decoration: none;
+            color: #00796b;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>הבית לחיות בשיר</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'blog' %}">בלוג\חדשות</a></li>
+                <li><a href="/contact">צור קשר</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="about">
+            <h2>אודות המקום</h2>
+            <p>ברוכים הבאים ל"הבית לחיות בשיר"! אנחנו ארגון ללא מטרות רווח המוקדש לעזור לחיות למצוא בתים חמים ואוהבים. המקום שלנו מציע מקלט זמני לחיות מחמד נטושות או בלתי רצויות, ומסייע להם למצוא משפחות מאמצות שמתאימות להם.</p>
+            <p>המטרה שלנו היא לספק טיפול מסור ואוהב לכל חיה שמגיעה אלינו, ולהבטיח שכל חיה תזכה לבית שבו תוכל לפרוח ולהיות מאושרת.</p>
+            <p>אנו פועלים בזכות מתנדבים מסורים ותרומות מהקהילה, ושואפים להעלות את המודעות לחשיבות האימוץ ולהפחתת הנטישה של חיות מחמד.</p>
+            <p>תודה שבחרתם לבקר באתר שלנו ולתמוך בעבודתנו החשובה!</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 הבית לחיות בשיר. כל הזכויות שמורות.</p>
+        <a href="{% url 'home' %}">חזרה לדף הראשי</a>
+    </footer>
+</body>
+</html>

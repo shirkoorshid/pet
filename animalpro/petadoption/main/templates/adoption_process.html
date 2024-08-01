@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>תהליך האימוץ</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>תהליך האימוץ</h1>
+        <p>הצעדים בתהליך האימוץ הם:</p>
+        <ul>
+            <li><strong>סקירה ראשונית:</strong> צוותנו יסקור את הבקשה שלכם ויכול ליצור קשר למידע נוסף.</li>
+            <li><strong>פגישה אישית:</strong> אם הבקשה שלכם תאושר, נקבע פגישה אישית עם החיה.</li>
+            <li><strong>ביקור בבית:</strong> יתכן שייערך ביקור בביתכם לוודא שהסביבה מתאימה לחיה.</li>
+            <li><strong>השלמת תהליך האימוץ:</strong> לאחר כל השלבים, תוכלו להשלים את האימוץ על ידי חתימה על הסכם האימוץ ותשלום דמי האימוץ.</li>
+        </ul>
+        <a href="{% url 'home' %}">חזרה לדף הראשי</a> <!-- Adjust this to your homepage URL name -->
+    </div>
+</body>
+</html>

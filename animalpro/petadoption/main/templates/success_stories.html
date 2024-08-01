@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>סיפורי הצלחה</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+   <img src="/static/images/images/golden-retriver.jpg"/>
+    <div class="container">
+        <h1>סיפורי הצלחה</h1>
+        <p>קראו כיצד האימוץ שינה את חייהם של אנשים וחיות מחמד:</p>
+        
+        <div class="story">
+            <h2>סיפור ההצלחה של מיה</h2>
+            <blockquote>
+                <p>"מאוד שמחנו למצוא את לולה שלנו. היא מביאה כל כך הרבה שמחה לבית שלנו. תודה על העבודה המדהימה שלכם!"</p>
+                <footer>— מיה ורוני</footer>
+            </blockquote>
+        </div>
+        
+        <div class="story">
+            <h2>סיפור ההצלחה של אורי</h2>
+            <blockquote>
+                <p>"האימוץ של מקס היה החוויה הטובה ביותר שלנו. הוא חבר אמיתי למשפחה שלנו והיה פשוט מושלם מהרגע הראשון."</p>
+                <footer>— אורי ויעל</footer>
+            </blockquote>
+        </div>
+        
+        <div class="story">
+            <h2>סיפור ההצלחה של דנה</h2>
+            <blockquote>
+                <p>"הצוות שלכם עשה עבודה נהדרת בהתאמת החיה הנכונה לנו. פלוטו הוא חבר נהדר ואנחנו אסירי תודה."</p>
+                <footer>— דנה ויוסי</footer>
+            </blockquote>
+        </div>
+        
+        <a href="{% url 'home' %}">חזרה לדף הראשי</a> <!-- Adjust this to your homepage URL name -->
+    </div>
+</body>
+</html>
