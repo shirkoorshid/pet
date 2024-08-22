@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="he">
 <head>
+    <meta charset="UTF-8">
     <title>Pet List</title>
     <style>
         .container {
@@ -8,23 +9,49 @@
             margin: 0 auto;
             padding: 20px;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
+        h1 {
             text-align: center;
+            margin-bottom: 20px;
+            color: #333;
         }
-        th {
-            background-color: #f2f2f2;
+        .pets-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
         }
-        img {
-            max-width: 100px;
+        .pet-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            max-width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+            background-color: #fff;
+            overflow: auto; /* Allows scrolling if content overflows */
+            height: 400px; 
+        }
+        .pet-card:hover {
+            transform: scale(1.05);
+        }
+        .pet-image {
+            width: 100%;
+            height: 200px; /* Fixed height for uniform image size */
+            object-fit: cover; /* Ensures the image covers the box while maintaining aspect ratio */
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .pet-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .pet-info {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -33,33 +60,19 @@
         <h1>Available Pets</h1>
 
         {% if pets %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Breed</th>
-                    <th>Age</th>
-                    <th>Temperament</th>
-                    <th>Description</th>
-                    <th>Medical History</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for pet in pets %}
-                <tr>
-                    <td><img src="{{ pet.image.url }}" alt="{{ pet.name }}"></td>
-                    <td>{{ pet.name }}</td>
-                    <td>{{ pet.breed }}</td>
-                    <td>{{ pet.age }}</td>
-                    <td>{{ pet.temperament}}</td>
-                    <td>{{ pet.description }}</td>
-                    <td>{{ pet.medical_history }}</td>
-                    
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="pets-grid">
+            {% for pet in pets %}
+            <div class="pet-card">
+                <img class="pet-image" src="{{ pet.image.url }}" alt="{{ pet.name }}">
+                <div class="pet-name">{{ pet.name }}</div>
+                <div class="pet-info">Breed: {{ pet.breed }}</div>
+                <div class="pet-info">Age: {{ pet.age }}</div>
+                <div class="pet-info">Temperament: {{ pet.temperament }}</div>
+                <div class="pet-info">Description: {{ pet.description }}</div>
+                <div class="pet-info">Medical History: {{ pet.medical_history }}</div>
+            </div>
+            {% endfor %}
+        </div>
         {% else %}
         <p>No pets available at the moment.</p>
         {% endif %}

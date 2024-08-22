@@ -107,7 +107,7 @@ def contact(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
         
-        
+        print(f'name = {name}, email = {email}, message={message}')
         
         # Set success to True to show the success message
         success = True
