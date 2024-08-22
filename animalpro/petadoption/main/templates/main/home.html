@@ -4,20 +4,64 @@
     <title>Pet Adoption</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <style>
+        body {
+            background-image: url('{% static 'background.jpg' %}');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+        .pet {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .pet img {
+            border-radius: 10px;
+            margin-right: 20px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-
-
     <div class="container">
         <h1>הבית של שיר</h1>
-        <p>הקדמה קצרה על מטרת האתר.</p>
+        
 
         <h2>חיות מחמד מומלצות</h2>
         {% for pet in recommended_pets %}
             <div class="pet">
                 <img src="{{ pet.image.url }}" alt="{{ pet.name }}" class="pet-image">
-                <h3>{{ pet.name }}</h3>
-                <p>{{ pet.description }}</p>
+                <div>
+                    <h3>{{ pet.name }}</h3>
+                    <p>{{ pet.description }}</p>
+                </div>
             </div>
         {% endfor %}
 

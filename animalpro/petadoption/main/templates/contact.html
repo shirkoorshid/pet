@@ -7,21 +7,104 @@
     <title>יצירת קשר</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #fff;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #00796b;
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        input[type="submit"] {
+            background-color: #00796b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #004d40;
+        }
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+        }
+        footer a {
+            color: #00796b;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    
     <div class="container">
         <h1>צור קשר</h1>
-        <form method="post">
-            {% csrf_token %}
-            <label for="name">שם:</label>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="email">אימייל:</label>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="message">הודעה:</label><br>
-            <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
-            <input type="submit" value="שלח">
-        </form>
+        {% if success %}
+            <div class="success-message">
+                <p>ההודעה נשלחה בהצלחה!</p>
+                <a href="{% url 'home' %}">חזרה לדף הראשי</a>
+            </div>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <label for="name">שם:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">אימייל:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="message">הודעה:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+                <input type="submit" value="שלח">
+            </form>
+        {% endif %}
     </div>
     <footer>
         <p>&copy; 2024 הבית לחיות של שיר. כל הזכויות שמורות.</p>

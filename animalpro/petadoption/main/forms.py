@@ -9,3 +9,5 @@ class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, label='שם')
     email = forms.EmailField(label='אימייל')
     message = forms.CharField(widget=forms.Textarea, label='הודעה')
+
+    

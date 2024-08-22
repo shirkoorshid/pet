@@ -5,10 +5,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegisterForm 
 from django.contrib.auth import login, authenticate
-
-
 from django.http import HttpResponse
 from .forms import ContactForm
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
+
 
 
 
@@ -22,7 +24,7 @@ def home(request):
 
 def pet_list(request):
     pets = Pet.objects.all()
-    return render(request, 'main/pet_list.html', {'pets': pets})
+    return render(request, 'templates/admin/pet_list.html', {'pets': pets})
 
 def pet_detail(request, pet_id):
     pet = Pet.objects.get(id=pet_id)
@@ -38,7 +40,9 @@ def about_us(request):
     return render(request, 'main/about_us.html')
 
 def resources(request):
-    return render(request, 'main/resources.html')
+    pets = Pet.objects.all()  # Fetch all Pet objects from the database
+    context = {'pets': pets}
+    return render(request=request, template_name='pet_list.html',context=context)
 
 def blog(request):
     return render(request, 'main/blog.html')
@@ -56,13 +60,6 @@ def blog(request):
     return render(request, 'blog.html')
 
 
-def resources(request):
-    
-    return render(request, 'resources.html')
-
-def resources(request):
-    
-    return render(request, 'pet_list.html')
 
 def login_view(request):
     if request.method == 'POST':
@@ -101,19 +98,26 @@ def memorial(request):
     ]
     return render(request, 'memorial.html', {'pets': pets})
 
-# views.py
-def contact_view(request):
+def contact(request):
+    success = False
+    
     if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            # טיפול בנתונים, לדוגמה, שמירה בבסיס נתונים או שליחת אימייל
-            return redirect('contact_success')
-    else:
-        form = ContactForm()
-    return render(request, 'contact.html', {'form': form})
+        # Get form data
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        
+        
+        
+        # Set success to True to show the success message
+        success = True
+    context = {'success': success}    
+    return render(request, 'contact.html', context)
+"""
+def pet_list(request):
+    pets = Pet.objects.all()  # Fetch all Pet objects from the database
+    return render(request=request, template_name='C:\\Users\\User\\Desktop\\animalpro\\petadoption\\main\\templates\\pet_list.html', context={'pets': pets})
 
-def contact_success_view(request):
-    return HttpResponse('תודה על יצירת הקשר! ההודעה שלך נשלחה בהצלחה.')
 
 
-
+"""

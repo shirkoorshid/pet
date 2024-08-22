@@ -4,6 +4,52 @@
     <title>בלוג/חדשות</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <style>
+        body {
+            background-image: url('{% static 'background.jpg' %}');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+        article {
+            margin-bottom: 20px;
+        }
+        .comments-section {
+            margin-top: 40px;
+        }
+        .comment {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .comment-form textarea {
+            resize: vertical;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .comment-form button {
+            align-self: flex-end;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -40,6 +86,23 @@
             <p>אימוץ חיות הוא פעולה עם יתרונות רבים הן עבור החיה המאמצת והן עבור המאמצת. במאמר זה נפרט את היתרונות של אימוץ חיות, כיצד זה תורם לבריאות הנפשית של האדם, ומה היתרונות האישיים של האימוץ עבור החיה עצמה.</p>
             <p>אימוץ חיות יכול לשפר את איכות החיים, להקל על בדידות, ולספק שותף נאמן. בנוסף, זהו צעד חשוב לסייע לחיות שנמצאות במקלטים ובמצבים לא נוחים למצוא בתים חמים ואוהבים.</p>
         </article>
+
+        <div class="comments-section">
+            <h2>תגובות</h2>
+            <div class="comment">
+                <p><strong>יוסי:</strong> אירוע מדהים! כל הכבוד על ההשקעה.</p>
+            </div>
+            <div class="comment">
+                <p><strong>רונית:</strong> שמחה לשמוע על ההצלחות שלכם. המשיכו כך!</p>
+            </div>
+            <div class="comment">
+                <p><strong>דני:</strong> מחכה לראות את המתקנים החדשים!</p>
+            </div>
+            <form class="comment-form">
+                <textarea placeholder="הוסף תגובה..."></textarea>
+                <button type="submit">שלח</button>
+            </form>
+        </div>
 
         <a href="{% url 'home' %}">חזרה לדף הראשי</a> <!-- Adjust this to your homepage URL name -->
     </div>

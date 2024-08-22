@@ -15,3 +15,12 @@ class AdoptionApplication(models.Model):
     applicant_email = models.EmailField()
     message = models.TextField()
     status = models.CharField(max_length=50, choices=(('Pending', 'Pending'), ('Approved', 'Approved'), ('Rejected', 'Rejected')))
+
+class ContactSubmission(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    message = models.TextField()
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Message from {self.name} ({self.email})' 
