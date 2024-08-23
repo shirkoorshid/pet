@@ -1,31 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="he">
 <head>
+    <meta charset="UTF-8">
     <title>Pet Adoption</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
     <style>
         body {
-            background-image: url('{% static 'background.jpg' %}');
+            background-image: url('{% static 'images/background.jpeg' %}');
             background-size: cover;
-            font-family: Arial, sans-serif;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
             color: #333;
+            margin: 0;
+            padding: 0;
         }
         .container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 800px;
-            margin: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 900px;
+            margin: 50px auto;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
         h1, h2, h3 {
             text-align: center;
+            color: #007BFF;
         }
         .pet {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .pet img {
             border-radius: 10px;
@@ -37,24 +48,30 @@
         nav {
             display: flex;
             justify-content: space-around;
-            margin-top: 20px;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
         }
         nav a {
             text-decoration: none;
             color: #007BFF;
             font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
         nav a:hover {
-            text-decoration: underline;
+            background-color: #007BFF;
+            color: white;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>הבית של שיר</h1>
-        
 
-        <h2>חיות מחמד מומלצות</h2>
+       <!-- 
+       <h2>חיות מחמד מומלצות</h2>
         {% for pet in recommended_pets %}
             <div class="pet">
                 <img src="{{ pet.image.url }}" alt="{{ pet.name }}" class="pet-image">
@@ -63,7 +80,8 @@
                     <p>{{ pet.description }}</p>
                 </div>
             </div>
-        {% endfor %}
+        {% endfor %} 
+        -->
 
         <h2>תהליך האימוץ</h2>
         <p>לצורך אימוץ חיה, בצעו את הצעדים הבאים:</p>

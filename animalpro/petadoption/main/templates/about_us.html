@@ -7,19 +7,20 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Arial', sans-serif;
             direction: rtl; /* סידור הטקסט מימין לשמאל */
             margin: 0;
             padding: 0;
+            background-color: #f5f5f5;
         }
         header {
-            background-color: #f8f8f8;
+            background-color: #007BFF;
+            color: white;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         header h1 {
             margin: 0;
-            color: #333;
         }
         nav ul {
             list-style: none;
@@ -32,34 +33,52 @@
         }
         nav ul li a {
             text-decoration: none;
-            color: #00796b;
+            color: white;
+            font-weight: bold;
         }
         nav ul li a:hover {
             text-decoration: underline;
         }
         main {
             padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
         }
         .about h2 {
-            color: #333;
+            color: #007BFF;
         }
         .about p {
             margin-bottom: 15px;
             line-height: 1.6;
         }
+        .mission, .team, .support {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .team iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
         footer {
-            background-color: #f8f8f8;
+            background-color: #007BFF;
+            color: white;
             text-align: center;
             padding: 20px;
             box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
         }
         footer p {
             margin: 0;
-            color: #666;
         }
         footer a {
             text-decoration: none;
-            color: #00796b;
+            color: white;
+            font-weight: bold;
         }
         footer a:hover {
             text-decoration: underline;
@@ -71,7 +90,7 @@
         <h1>הבית לחיות בשיר</h1>
         <nav>
             <ul>
-                <li><a href="{% url 'blog' %}">בלוג\חדשות</a></li>
+                <li><a href="{% url 'blog' %}">בלוג/חדשות</a></li>
                 <li><a href="/contact">צור קשר</a></li>
             </ul>
         </nav>
@@ -80,13 +99,29 @@
         <section class="about">
             <h2>אודות המקום</h2>
             <p>ברוכים הבאים ל"הבית לחיות בשיר"! אנחנו ארגון ללא מטרות רווח המוקדש לעזור לחיות למצוא בתים חמים ואוהבים. המקום שלנו מציע מקלט זמני לחיות מחמד נטושות או בלתי רצויות, ומסייע להם למצוא משפחות מאמצות שמתאימות להם.</p>
-            <p>המטרה שלנו היא לספק טיפול מסור ואוהב לכל חיה שמגיעה אלינו, ולהבטיח שכל חיה תזכה לבית שבו תוכל לפרוח ולהיות מאושרת.</p>
-            <p>אנו פועלים בזכות מתנדבים מסורים ותרומות מהקהילה, ושואפים להעלות את המודעות לחשיבות האימוץ ולהפחתת הנטישה של חיות מחמד.</p>
-            <p>תודה שבחרתם לבקר באתר שלנו ולתמוך בעבודתנו החשובה!</p>
+        </section>
+        <section class="mission">
+            <h2>המשימה שלנו</h2>
+            <p>המטרה שלנו היא לספק טיפול מסור ואוהב לכל חיה שמגיעה אלינו, ולהבטיח שכל חיה תזכה לבית שבו תוכל לפרוח ולהיות מאושרת. אנו פועלים להעלות את המודעות לחשיבות האימוץ ולהפחתת הנטישה של חיות מחמד.</p>
+        </section>
+        <section class="team">
+            <h2>הצוות שלנו</h2>
+            <p>אנו פועלים בזכות מתנדבים מסורים ותרומות מהקהילה. הצוות שלנו כולל וטרינרים, מטפלים, ומתנדבים שמספקים טיפול ואהבה לכל חיה.</p>
+            <iframe src="https://www.youtube.com/embed/y8z2jhClUgc" allowfullscreen></iframe>
+        </section>
+        <section class="support">
+            <h2>כיצד תוכלו לעזור</h2>
+            <p>ישנן דרכים רבות שבהן תוכלו לעזור לנו להמשיך בעבודתנו:</p>
+            <ul>
+                <li>אימוץ חיה</li>
+                <li>התנדבות במקלט</li>
+                <li>תרומה כספית או תרומת ציוד</li>
+                <li>הפצת המידע על הארגון שלנו</li>
+            </ul>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 הבית לחיות בשיר. כל הזכויות שמורות.</p>
+        <p>© 2024 הבית לחיות בשיר. כל הזכויות שמורות.</p>
         <a href="{% url 'home' %}">חזרה לדף הראשי</a>
     </footer>
 </body>
