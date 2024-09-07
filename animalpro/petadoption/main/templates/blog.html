@@ -1,53 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="he">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>בלוג/חדשות</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <style>
         body {
             background-image: url('{% static 'background.jpg' %}');
             background-size: cover;
-            font-family: Arial, sans-serif;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .container {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
             border-radius: 10px;
-            max-width: 800px;
-            margin: auto;
+            max-width: 1000px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin: 20px;
         }
         h1, h2, h3 {
             text-align: center;
+            color: #0056b3;
         }
         article {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+        article:last-child {
+            border-bottom: none;
         }
         .comments-section {
             margin-top: 40px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
         }
         .comment {
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+        .comment img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .comment p {
+            margin: 0;
+            color: #555;
+        }
+        .comment strong {
+            color: #333;
         }
         .comment-form {
             display: flex;
             flex-direction: column;
         }
+        .comment-form input[type="text"],
+        .comment-form textarea {
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
         .comment-form textarea {
             resize: vertical;
-            padding: 10px;
-            margin-bottom: 10px;
+            height: 120px;
+        }
+        .comment-form input[type="file"] {
+            margin-bottom: 12px;
         }
         .comment-form button {
-            align-self: flex-end;
-            padding: 10px 20px;
+            align-self: flex-start;
+            padding: 12px 24px;
             background-color: #007BFF;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .comment-form button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 18px;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -90,21 +149,26 @@
         <div class="comments-section">
             <h2>תגובות</h2>
             <div class="comment">
+                <img src="{% static 'user1.jpg' %}" alt="User 1">
                 <p><strong>יוסי:</strong> אירוע מדהים! כל הכבוד על ההשקעה.</p>
             </div>
             <div class="comment">
+                <img src="{% static 'user2.jpg' %}" alt="User 2">
                 <p><strong>רונית:</strong> שמחה לשמוע על ההצלחות שלכם. המשיכו כך!</p>
             </div>
             <div class="comment">
+                <img src="{% static 'user3.jpg' %}" alt="User 3">
                 <p><strong>דני:</strong> מחכה לראות את המתקנים החדשים!</p>
             </div>
-            <form class="comment-form">
-                <textarea placeholder="הוסף תגובה..."></textarea>
+            <form class="comment-form" method="POST">
+                <input type="text" name="name" placeholder="הכנס שם...">
+                <textarea name="text" placeholder="הוסף תגובה..."></textarea>
+                <input type="file" name="file" accept="image/*">
                 <button type="submit">שלח</button>
             </form>
         </div>
 
-        <a href="{% url 'home' %}">חזרה לדף הראשי</a> <!-- Adjust this to your homepage URL name -->
+        <a href="{% url 'home' %}">חזרה לדף הראשי</a>
     </div>
 </body>
 </html>

@@ -26,3 +26,4 @@ class ContactSubmission(models.Model):
         return f'Message from {self.name} ({self.email})' 
     
     
+

@@ -1,9 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="he">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>תהליך האימוץ</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #e2e2e2;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        ul li strong {
+            color: #333;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        .faq-section {
+            margin-top: 30px;
+        }
+
+        .faq-section h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .faq {
+            margin-bottom: 15px;
+            border: 1px solid #e2e2e2;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #0056b3;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            color: #555;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .faq.open .faq-answer {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -24,7 +137,61 @@
         <p>לאחר בחירת חיית המחמד יעבור הכלב או החתול בדיקה וטרינרית במרפאת האגודה ויקבל את החיסונים הנדרשים. קבלת אישורים ופנקס חיסונים והסדרת התרומה לאגודה. אם בעל החיים מסורס (או מעוקרת) ניתן לקחת אותו הביתה. במידה ולא, פקידת הקבלה תקבע עבורו תור לניתוח, וברוב המקרים ניתן יהיה לאסוף אותו למחרת בערב. כל בעלי החיים יימסרו לבעליהם החדשים רק לאחר שעברו עיקור או סירוס, וכלבים יימסרו כאשר הם משובבים.</p>
         <p>האגודה רשאית לסרב למסור בעל חיים כלשהו למאמץ כלשהו לפי שיקול דעתה הבלעדי וללא צורך בהנמקה. שימו לב – ההחלטה לאמץ בעל חיים היא החלטה מחייבת. על המאמצים להיות בטוחים כי יוכלו לספק לבעל החיים את כל צרכיו למשך כל חייו, וכי יש בידיהם את האמצעים לעשות זאת – זמן פנוי, מקום מגורים מתאים, ויכולת כלכלית לרכוש מזון, לחסן ולהעניק טיפול רפואי בשעת הצורך. אם אינכם בטוחים שתוכלו לעמוד באחריות הזו, אנא הימנעו מלאמץ בעל חיים.</p>
         <p>פרטים ותמונות של בעלי החיים המועמדים לאימוץ מפורסמים במדור האימוצים באתר. כמו כן בעמוד המדריכים תמצאו מדריכים מפורטים למאמצים כלב ולמאמצים חתול וכתבות רבות, הכוללות טיפים ומידע עשיר בכל הנוגע לאימוץ וטיפול בבעלי החיים.</p>
-        <a href="{% url 'home' %}">חזרה לדף הראשי</a> <!-- Adjust this to your homepage URL name -->
+        
+        <a href="/">חזרה לעמוד הראשי</a>
+
+        <div class="faq-section">
+            <h2>שאלות נפוצות</h2>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    מה לעשות אם אינני יכול להמשיך לטפל בבעל החיים שאימצתי?
+                </div>
+                <div class="faq-answer">
+                    האימוץ הוא תהליך מחייב, אך אם מתעוררת בעיה או שאתם מרגישים שאינכם יכולים להמשיך לדאוג לבעל החיים, יש ליצור קשר עם האגודה. אנו נעשה כל שביכולתנו למצוא פתרון המתאים לכל הצדדים.
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    איך בוחרים את בעל החיים המתאים ביותר?
+                </div>
+                <div class="faq-answer">
+                    יועצי האימוץ של האגודה ידריכו אתכם בבחירת בעל החיים המתאים, בהתאם לצרכים שלכם, לסגנון החיים ולתנאי המגורים שלכם. אנו נעשה כל מאמץ למצוא לכם את החבר הכי טוב עבורכם.
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    האם כל בעלי החיים שמוצעים לאימוץ מחוסנים ומטופלים?
+                </div>
+                <div class="faq-answer">
+                    כן, כל בעלי החיים שעוברים תהליך אימוץ באגודה מקבלים טיפול רפואי כולל חיסונים, עיקור או סירוס, ובדיקות וטרינריות נוספות בהתאם לצורך.
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    האם אני חייב לבוא לאגודה כדי לאמץ?
+                </div>
+                <div class="faq-answer">
+                    כן, חשוב שתפגשו את בעל החיים פנים אל פנים ותרגישו את החיבור לפני שאתם מחליטים לאמץ. המפגש האישי הוא חלק בלתי נפרד מתהליך האימוץ.
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const faq = item.parentElement;
+                faq.classList.toggle('open');
+            });
+        });
+    </script>
 </body>
 </html>

@@ -45,7 +45,9 @@ def resources(request):
     return render(request=request, template_name='pet_list.html',context=context)
 
 def blog(request):
-    return render(request, 'main/blog.html')
+    if request.method == 'POST':
+        # store it in the DB
+      render(request, 'main/blog.html')
 
 def adoption_process(request):
     return render(request, 'adoption_process.html')
@@ -73,6 +75,10 @@ def login_view(request):
             messages.error(request, 'שם המשתמש או הסיסמה שגויים')
     return render(request, 'login.html')
 
+def logout_view(request):
+    logout(request)
+    return redirect('home')
+
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -84,7 +90,7 @@ def register_view(request):
             user.save()
             # התחברות אוטומטית לאחר הרשמה
             login(request, user)
-            return redirect('home')
+            return redirect('login.html')
     else:
         form = RegisterForm()
 
