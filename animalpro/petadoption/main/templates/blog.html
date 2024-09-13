@@ -17,82 +17,127 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
+            box-sizing: border-box;
         }
         .container {
             background-color: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 10px;
+            padding: 40px;
+            border-radius: 15px;
             max-width: 1000px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             margin: 20px;
+            overflow: auto;
         }
-        h1, h2, h3 {
+        h1 {
             text-align: center;
             color: #0056b3;
+            font-size: 3em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #007BFF;
+            border-bottom: 3px solid #007BFF;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+        h3 {
+            color: #0056b3;
+            font-size: 1.8em;
+            margin-bottom: 15px;
         }
         article {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 20px;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #ddd;
         }
         article:last-child {
             border-bottom: none;
         }
         .comments-section {
-            margin-top: 40px;
-            border-top: 1px solid #ddd;
-            padding-top: 20px;
+            margin-top: 50px;
+            border-top: 2px solid #ddd;
+            padding-top: 30px;
         }
         .comment {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
         }
         .comment img {
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
-            margin-right: 15px;
+            margin-right: 20px;
         }
         .comment p {
             margin: 0;
             color: #555;
+            font-size: 1.1em;
         }
         .comment strong {
             color: #333;
+            font-size: 1.2em;
         }
-        .comment-form {
+        .comment-buttons {
+            margin-left: auto;
             display: flex;
             flex-direction: column;
         }
-        .comment-form input[type="text"],
-        .comment-form textarea {
-            padding: 12px;
-            margin-bottom: 12px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-        .comment-form textarea {
-            resize: vertical;
-            height: 120px;
-        }
-        .comment-form input[type="file"] {
-            margin-bottom: 12px;
-        }
-        .comment-form button {
-            align-self: flex-start;
-            padding: 12px 24px;
+        .comment-buttons button {
+            margin-top: 8px;
+            padding: 10px 20px;
             background-color: #007BFF;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-size: 1em;
+        }
+        .comment-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+        }
+        .comment-form input[type="text"],
+        .comment-form textarea {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1.1em;
+            box-sizing: border-box;
+        }
+        .comment-form textarea {
+            resize: vertical;
+            height: 150px;
+        }
+        .comment-form input[type="file"] {
+            margin-bottom: 15px;
+        }
+        .comment-form button {
+            align-self: flex-start;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1.1em;
         }
         .comment-form button:hover {
             background-color: #0056b3;
@@ -100,10 +145,10 @@
         a {
             display: block;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
             text-decoration: none;
             color: #007BFF;
-            font-size: 18px;
+            font-size: 1.2em;
         }
         a:hover {
             text-decoration: underline;
@@ -148,24 +193,34 @@
 
         <div class="comments-section">
             <h2>תגובות</h2>
-            <div class="comment">
-                <img src="{% static 'user1.jpg' %}" alt="User 1">
-                <p><strong>יוסי:</strong> אירוע מדהים! כל הכבוד על ההשקעה.</p>
-            </div>
-            <div class="comment">
-                <img src="{% static 'user2.jpg' %}" alt="User 2">
-                <p><strong>רונית:</strong> שמחה לשמוע על ההצלחות שלכם. המשיכו כך!</p>
-            </div>
-            <div class="comment">
-                <img src="{% static 'user3.jpg' %}" alt="User 3">
-                <p><strong>דני:</strong> מחכה לראות את המתקנים החדשים!</p>
-            </div>
-            <form class="comment-form" method="POST">
-                <input type="text" name="name" placeholder="הכנס שם...">
-                <textarea name="text" placeholder="הוסף תגובה..."></textarea>
-                <input type="file" name="file" accept="image/*">
-                <button type="submit">שלח</button>
-            </form>
+            {% for comment in comments %}
+                <div class="comment">
+                    <img src="{% static 'default-user.jpg' %}" alt="User Image">
+                    <div>
+                        <p><strong>{{ comment.user.username }}:</strong> {{ comment.content }} <em>({{ comment.created_at }})</em></p>
+                        {% if user.is_authenticated and comment.user == user %}
+                            <div class="comment-buttons">
+                                <button onclick="location.href='{% url 'edit_comment' comment.id %}'">ערוך</button>
+                                <form action="{% url 'delete_comment' comment.id %}" method="POST" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit">מחק</button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <p>אין תגובות עדיין.</p>
+            {% endfor %}
+            {% if user.is_authenticated %}
+                <form class="comment-form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit">שלח</button>
+                </form>
+            {% else %}
+                <p>עליך להתחבר על מנת להוסיף תגובה.</p>
+            {% endif %}
         </div>
 
         <a href="{% url 'home' %}">חזרה לדף הראשי</a>

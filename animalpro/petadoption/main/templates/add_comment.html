@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הוסף תגובה</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        /* הוסף כאן את סגנון ה-CSS שלך */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>הוסף תגובה לבלוג</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit">שלח תגובה</button>
+        </form>
+        <a href="{% url 'blog' %}">חזרה לבלוג</a>
+    </div>
+</body>
+</html>

@@ -4,9 +4,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-
-
-
 urlpatterns = [
     path('', views.home, name='home'),
     path('pets/', views.pet_list, name='pet_list'),
@@ -19,10 +16,14 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('register/', views.register_view, name='register'),
-    
     path('memorial/', views.memorial, name='memorial'),
-    
-   path('contact/', views.contact, name='contact'),
+    path('contact/', views.contact, name='contact'),
+
+    path('comment/add/', views.add_comment, name='add_comment'),  # הוספת תגובה
+    path('comment/edit/<int:comment_id>/', views.edit_comment, name='edit_comment'),  # עריכת תגובה
+    path('comment/delete/<int:comment_id>/', views.delete_comment, name='delete_comment'),  # מחיקת תגובה
+
+  
    
     
 ]

@@ -115,3 +115,8 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
+
+blog-comment {
+    width:80%;
+    height: 10em;
+}

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Pet
+from .models import BlogPost
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -7,16 +8,14 @@ from .forms import RegisterForm
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponse
 from .forms import ContactForm
+from .forms import CommentForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 
 
-
-
-
-
-
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     recommended_pets = Pet.objects.all()[:3]  # Example query for recommended pets
@@ -59,7 +58,19 @@ def about_us(request):
     return render(request, 'about_us.html')
 
 def blog(request):
-    return render(request, 'blog.html')
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            from django.utils.timezone import localtime
+            now = localtime().date()
+            post = BlogPost(title='',
+                            content=form.cleaned_data["content"],
+                            created_at=now,
+                            author=request.user)
+            post.save()
+    else:
+        form = CommentForm()
+    return render(request, 'blog.html', {"form": form, "comments": BlogPost.objects.all()})
 
 
 
@@ -127,3 +138,41 @@ def pet_list(request):
 
 
 """
+
+@login_required
+def add_comment(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.save()
+            return redirect('blog')  # להפנות לדף הבלוג לאחר הוספת התגובה
+    else:
+        form = CommentForm()
+    return render(request, 'add_comment.html', {'form': form})
+
+@login_required
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.user != request.user:
+        return HttpResponse('לא מורשה', status=403)
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('blog')
+    else:
+        form = CommentForm(instance=comment)
+    return render(request, 'edit_comment.html', {'form': form})
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.user != request.user:
+        return HttpResponse('לא מורשה', status=403)
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('blog')
+    return render(request, 'confirm_delete_comment.html', {'comment': comment})
+
